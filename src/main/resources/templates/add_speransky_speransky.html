@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<form method="post" th:action="@{speransky/speransky/add}" th:object="${speransky}">
+
+</form>
+
+<p> Строим Сперанского на  <span th:if="${addInfo}" th:text="${addInfo}" style="color:red"></span> итераций !</p>
+
+<p><a href="/">На главную</a> </p>
+</body>
+</html>

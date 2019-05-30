@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" th:action="@{speransky/add}" th:object="${speransky}">
+   <div>
+        <label>Введите число итераций: <input th:field="*{iteration}" type="text"></label>
+    </div>
+
+   <p><input type="submit" value="Нарисовать"></p>
+
+</form>
+
+
+
+<p> Строим Сперанского на  <span th:if="${addInfo}" th:text="${addInfo}" style="color:red"></span> итераций !</p>
+
+
+
+
+<p><a href="/">На главную</a> </p>
+</body>
+</html>
