@@ -6,19 +6,17 @@
 </head>
 <body>
 
-<form method="post" th:action="@{speransky/add}" th:object="${speransky}">
-   <div>
-        <label>Введите число итераций: <input th:field="*{iteration}" type="text"></label>
-    </div>
-
-   <p><input type="submit" value="Нарисовать"></p>
+<form method="post" th:action="@{/speransky}" th:object="${speransky}">
+    <label>Введите количество итераций: <input th:field="*{iteration}" type="text"></label>
+    <p><input type="submit" value="Нарисовать"></p>
+    <img th:src="@{'/image/'+${imgname}}" alt="iii" width="650" height="650" border="2" />
+   <!--<img th:src="@{'/image/'+${imgname}}" alt="q" width="650" height="650" border="2" />-->
+    <!--<img src="D:\my\fractalTools\src\main\resources\image\speransky.png"  />-->
+    <!--<p><a href="/speransky/image">Показать изображение</a> </p>-->
 
 </form>
 
-
-
 <p> Строим Сперанского на  <span th:if="${addInfo}" th:text="${addInfo}" style="color:red"></span> итераций !</p>
-
 
 
 
