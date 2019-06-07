@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<form method="post" th:action="@{/julia}"  th:object="${julia}">
+    <!--<label>первые координаты: <input th:field="*{xCord}" type="text"></label>-->
+    <!--<label>вторые координаты: <input th:field="*{yCord}" type="text"></label>-->
+
+    <label>первая координата: <input th:field="*{ax}" type="text"></label>
+    <label>вторая координата: <input th:field="*{bx}" type="text"></label>
+
+    <h3>
+        попробовать параметры....
+    </h3>
+    <label> координаты [-0.55, -0.55]</label>
+    <label> координаты [0.45, 0.14828]</label>
+    <label> координаты [-0.70176, -0.2321]</label>
+    <label> координаты [-0.835, 0.156]</label>
+    <label> координаты [-0.7269, 0.1889]</label>
+    <!--<div>-->
+    <!--<select name="yCord">-->
+    <!--<option>Выберите x</option>-->
+    <!--<option value="x=">-0.55</option>-->
+    <!--<option value="x=">-0.5 Гена</option>-->
+    <!--<option value="x=">-0.23</option>-->
+    <!--<option value="x=">-0.1</option>-->
+
+    <!--</select>-->
+    <!--</div>-->
+
+
+    <p><input type="submit" value="Нарисовать"></p>
+
+    <img th:src="@{'/image/'+${imgname}}" alt="iii" width="1920" height="1080" border="2" />
+</form>
+
+<p> Строим множество Жули с координатами  <span th:if="${addInfo}" th:text="${addInfo}" style="color:red"></span>  !</p>
+
+
+
+<p><a href="/">На главную</a> </p>
+</body>
+</html>

@@ -1,12 +1,14 @@
 package com.S98809.fractalTools.controller;
-import com.S98809.fractalTools.entity.Circus;
-import com.S98809.fractalTools.entity.Speransky;
-import com.S98809.fractalTools.entity.Tfractal;
+import com.S98809.fractalTools.entity.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
 
 @Controller
 public class FractalController {
@@ -76,6 +78,67 @@ public class FractalController {
         return "add_tfract";
 
     }
+
+
+
+
     /////////////////////------------------------------------------------
+
+    @RequestMapping(value = "/mandelbrot",method = RequestMethod.POST)
+    public String submitFormM(@ModelAttribute MandelbrotFract mandelbrotFract, Model model)
+    {
+
+        try {
+            mandelbrotFract.drawM();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("addInfo"," "+ mandelbrotFract.getName());
+        model.addAttribute("imgname","mandelbrot.bmp");
+
+        return "add_mandelbrot";
+    }
+
+
+    @RequestMapping(value = "/mandelbrot",method = RequestMethod.GET)
+    public String showFormM(@ModelAttribute MandelbrotFract mandelbrotFract, Model model)
+    {
+        model.addAttribute("mandelbrot",new MandelbrotFract());
+
+        return "add_mandelbrot";
+
+    }
+
+    ///-------------------------------------------------------------------
+    @RequestMapping(value = "/julia",method = RequestMethod.POST)
+    public String submitFormJ(@ModelAttribute ("julia") JuliaFractal juliaFractal, Model model)  {
+
+//    public String submitFormJ(@ModelAttribute JuliaFractal juliaFractal,
+//        @RequestParam (name = "xCord") String xCord,
+//        @RequestParam (name = "yCord") String yCord,
+//                                 Model model)
+
+        try {
+            juliaFractal.drawJulia();
+            System.out.println(" нарисовал ");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("addInfo"," x "+juliaFractal.getAx()+" y "+juliaFractal.getBx());
+        model.addAttribute("imgname","julia.bmp");
+
+        return "add_julia";
+    }
+
+
+    @RequestMapping(value = "/julia",method = RequestMethod.GET)
+    public String showFormJ(@ModelAttribute JuliaFractal juliaFractal, Model model)
+    {
+        model.addAttribute("julia",new JuliaFractal());
+
+        return "add_julia";
+
+    }
+
 
 }

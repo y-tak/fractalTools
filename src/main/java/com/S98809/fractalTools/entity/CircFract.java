@@ -31,7 +31,7 @@ public class CircFract extends JPanel {
             for(int i = 0; i < N; i++){     //все остальные окружности
                 DrCirc(x - Math.round(den*Math.sin(2*Math.PI/N*i)), y + Math.round(den*Math.cos(2*Math.PI/N*i)), rad, g);
             }
-            g.setColor(Color.BLUE);
+            g.setColor(Color.WHITE);
             g.drawOval((int)x-size, (int)y-size, 2*size, 2*size);
         }
     }
