@@ -6,7 +6,7 @@ import java.awt.*;
 public class TFract extends JPanel {
     private static final long serialVersionUID = 1L;
     //static
-    int iter = 6;//количество итераций
+  //  int iter = 6;//количество итераций
      private int iteration;
 
     public TFract(int nn) {
@@ -19,6 +19,7 @@ public class TFract extends JPanel {
         //size - длина стороны
         //iter - кол-во итераций
         //g - экземпляр библиотечного класса, ответственного за отрисовку
+
         if (iter == 1) {//если итерация одна, просто рисуем заполненный прямоугольник
             g.fillRect(A.x, A.y, size, size);
             return 0;
@@ -59,7 +60,7 @@ public class TFract extends JPanel {
         int w = 1600;
 
         Point A = new Point(w / 2 - h / 4, h / 4);//координаты левого верхнего угла исходного квадрата
-        drawTSQ(g, A, h / 2 - h / 10, iter);//вызываем отрисовку фрактала
+        drawTSQ(g, A, h / 2 - h / 10, iteration);//вызываем отрисовку фрактала
         repaint();
 
     }

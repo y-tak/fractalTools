@@ -26,7 +26,7 @@ public class Tfractal {
             g.dispose();
 
             try {
-                ImageIO.write(bufferedImage, "png", new File("src/main/resources/static/image/tfract.bmp"));
+                ImageIO.write(bufferedImage, "png", new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\tfract.bmp"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

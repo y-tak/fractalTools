@@ -52,7 +52,7 @@ public class FractalController {
     @RequestMapping(value = "/circus",method = RequestMethod.GET)
     public String showFormC(@ModelAttribute Circus circus, Model model)
     {
-        model.addAttribute("circus",new Circus());
+        model.addAttribute("obj",new Circus());
 
         return "add_circus";
 

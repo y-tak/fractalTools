@@ -23,7 +23,7 @@ private String name="mandelbrot";
         Progress image = new Progress(new FractalImage(1920, 1080, fractal, palette));
         bmp.image = image;
         Date data=new Date();
-        File file = new File("src/main/resources/static/image/mandelbrot.bmp");
+        File file = new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\mandelbrot.bmp");
         FileOutputStream out = new FileOutputStream(file);
         BmpWriter.write(out, bmp);
         out.close();

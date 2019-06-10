@@ -22,7 +22,7 @@ public class JuliaFractal {
         Progress image = new Progress(new FractalImage(1920, 1080, fractal, palette));
         bmp.image = image;
 
-        File file = new File("src/main/resources/static/image/julia.bmp");
+        File file = new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\julia.bmp");
         FileOutputStream out = new FileOutputStream(file);
         BmpWriter.write(out, bmp);
         out.close();

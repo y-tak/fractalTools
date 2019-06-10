@@ -27,7 +27,7 @@ public class Speransky {
         g.dispose();
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("src/main/resources/static/image/speransky.png"));
+            ImageIO.write(bufferedImage, "png", new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\speransky.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

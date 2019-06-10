@@ -25,7 +25,7 @@ public class Circus {
         g.dispose();
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("src/main/resources/static/image/circus.png"));
+            ImageIO.write(bufferedImage, "png", new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\circus.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
