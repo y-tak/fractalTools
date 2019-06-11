@@ -1,4 +1,7 @@
-package com.S98809.fractalTools.entity;
+package com.S98809.fractalTools.entity.support;
+
+import com.S98809.fractalTools.entity.Fractal;
+import com.S98809.fractalTools.entity.Position;
 
 public class FractalImage implements Rgb888Image {
 

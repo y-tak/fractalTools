@@ -1,4 +1,6 @@
-package com.S98809.fractalTools.entity;
+package com.S98809.fractalTools.entity.support;
+
+import com.S98809.fractalTools.entity.support.LittleEndianDataOutput;
 
 import java.io.IOException;
 import java.io.OutputStream;

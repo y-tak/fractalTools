@@ -1,28 +1,22 @@
 package com.S98809.fractalTools.controller;
 import com.S98809.fractalTools.entity.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 
 @Controller
 public class FractalController {
     @RequestMapping(value = "/speransky",method = RequestMethod.POST)
-//    public String submitForm(@RequestParam(name = "iteration",required=true,defaultValue = "1") String iteration,
-//                                Model model)
 
-    public String submitForm(@ModelAttribute Speransky speransky,Model model)
-    {
+    public String submitForm(@ModelAttribute ("speransky") Speransky speransky, Model model) throws IOException {
 
-        speransky.drawSperansky();
+        speransky.drawFractal();
         model.addAttribute("addInfo"," "+speransky.getIteration());
         model.addAttribute("imgname","speransky.png");
-
         return "add_speransky";
     }
 
@@ -38,31 +32,27 @@ public class FractalController {
 
 ///-------------------------------------------------------------------------------
     @RequestMapping(value = "/circus",method = RequestMethod.POST)
-    public String submitFormC(@ModelAttribute Circus circus, Model model)
-    {
+    public String submitFormC(@ModelAttribute ("circus") Circus circus, Model model) throws IOException {
 
-        circus.drawCircFract();
+        circus.drawFractal();
         model.addAttribute("addInfo"," "+circus.getIteration());
         model.addAttribute("imgname","circus.png");
-
         return "add_circus";
     }
-
 
     @RequestMapping(value = "/circus",method = RequestMethod.GET)
     public String showFormC(@ModelAttribute Circus circus, Model model)
     {
-        model.addAttribute("obj",new Circus());
 
+        model.addAttribute("circus",new Circus());
         return "add_circus";
-
     }
+
     ///------------------------------------------------------------------
     @RequestMapping(value = "/tfractal",method = RequestMethod.POST)
-    public String submitFormТ(@ModelAttribute Tfractal tfractal, Model model)
-    {
+    public String submitFormТ(@ModelAttribute ("tfractal") TFractal tfractal, Model model) throws IOException {
 
-        tfractal.drawTFract();
+        tfractal.drawFractal();
         model.addAttribute("addInfo"," "+ tfractal.getIteration());
         model.addAttribute("imgname","tfract.bmp");
 
@@ -71,29 +61,20 @@ public class FractalController {
 
 
     @RequestMapping(value = "tfractal",method = RequestMethod.GET)
-    public String showFormТ(@ModelAttribute Tfractal tfractal, Model model)
+    public String showFormТ(@ModelAttribute TFractal tfractal, Model model)
     {
-        model.addAttribute("tfractal",new Tfractal());
-
+        model.addAttribute("tfractal",new TFractal());
         return "add_tfract";
 
     }
-
-
-
-
     /////////////////////------------------------------------------------
 
     @RequestMapping(value = "/mandelbrot",method = RequestMethod.POST)
-    public String submitFormM(@ModelAttribute MandelbrotFract mandelbrotFract, Model model)
-    {
+    public String submitFormM(@ModelAttribute ("mandelbrot") Mandelbrot mandelbrotFract, Model model) throws IOException {
 
-        try {
-            mandelbrotFract.drawM();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        model.addAttribute("addInfo"," "+ mandelbrotFract.getName());
+        mandelbrotFract.drawFractal();
+
+        model.addAttribute("addInfo"," "+ mandelbrotFract.getIteration());
         model.addAttribute("imgname","mandelbrot.bmp");
 
         return "add_mandelbrot";
@@ -101,25 +82,19 @@ public class FractalController {
 
 
     @RequestMapping(value = "/mandelbrot",method = RequestMethod.GET)
-    public String showFormM(@ModelAttribute MandelbrotFract mandelbrotFract, Model model)
+    public String showFormM(@ModelAttribute Mandelbrot mandelbrotFract, Model model)
     {
-        model.addAttribute("mandelbrot",new MandelbrotFract());
-
+        model.addAttribute("mandelbrot",new Mandelbrot());
         return "add_mandelbrot";
 
     }
 
     ///-------------------------------------------------------------------
     @RequestMapping(value = "/julia",method = RequestMethod.POST)
-    public String submitFormJ(@ModelAttribute ("julia") JuliaFractal juliaFractal, Model model)  {
-
-//    public String submitFormJ(@ModelAttribute JuliaFractal juliaFractal,
-//        @RequestParam (name = "xCord") String xCord,
-//        @RequestParam (name = "yCord") String yCord,
-//                                 Model model)
+    public String submitFormJ(@ModelAttribute ("julia") Julia juliaFractal, Model model)  {
 
         try {
-            juliaFractal.drawJulia();
+            juliaFractal.drawFractal();
             System.out.println(" нарисовал ");
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,10 +107,9 @@ public class FractalController {
 
 
     @RequestMapping(value = "/julia",method = RequestMethod.GET)
-    public String showFormJ(@ModelAttribute JuliaFractal juliaFractal, Model model)
+    public String showFormJ(@ModelAttribute Julia  juliaFractal, Model model)
     {
-        model.addAttribute("julia",new JuliaFractal());
-
+        model.addAttribute("julia",new Julia());
         return "add_julia";
 
     }

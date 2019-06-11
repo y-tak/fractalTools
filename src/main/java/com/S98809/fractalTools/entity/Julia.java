@@ -1,13 +1,36 @@
 package com.S98809.fractalTools.entity;
 
-public class Julia implements Fractal {
+import com.S98809.fractalTools.entity.support.Pallete;
+import com.S98809.fractalTools.entity.support.*;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Julia implements Fractal,FractalClass {
+    private String ax;
+    private String bx;
+
+    private String iteration;
+    private int iter;
+
+
 
     private double a;
     private double b;
 //
-    public Julia(double a, double b) {
+    public Julia(double a, double b,int iter) {
       this.a = a;
       this.b = b;
+      this.iter=iter;
+    }
+    public Julia() {
+
+    }
+    public Julia(String ax,String bx,String iteration) {
+        this.ax = ax;
+        this.bx = bx;
+        this.iteration=iteration;
     }
 
     @Override
@@ -34,5 +57,45 @@ public class Julia implements Fractal {
 
         }
         return color;
+    }
+
+    @Override
+    public void drawFractal() throws IOException {
+
+          System.out.println("xCord = " + ax);
+            System.out.println("yCord = " + bx);
+            Fractal fractal=new Julia(Double.parseDouble(ax),Double.parseDouble(bx),Integer.parseInt(iteration));
+            BmpImage bmp = new BmpImage();
+            Pallete palette = new BlackAndWhite256Pallete();
+            ((BlackAndWhite256Pallete) palette).setIteration(Integer.parseInt(iteration));
+            Progress image = new Progress(new FractalImage(1920, 1080, fractal, palette));
+            bmp.image = image;
+            File file = new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\julia.bmp");
+            FileOutputStream out = new FileOutputStream(file);
+            BmpWriter.write(out, bmp);
+            out.close();
+    }
+    public String getAx() {
+        return ax;
+    }
+
+    public void setAx(String ax) {
+        this.ax = ax;
+    }
+
+    public String getBx() {
+        return bx;
+    }
+
+    public void setBx(String bx) {
+        this.bx = bx;
+    }
+
+    public String getIteration() {
+        return iteration;
+    }
+
+    public void setIteration(String iteration) {
+        this.iteration = iteration;
     }
 }

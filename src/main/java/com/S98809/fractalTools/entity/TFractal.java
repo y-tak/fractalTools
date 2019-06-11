@@ -1,18 +1,25 @@
 package com.S98809.fractalTools.entity;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class TFract extends JPanel {
+public class TFractal extends JPanel implements FractalClass{
     private static final long serialVersionUID = 1L;
-    //static
-  //  int iter = 6;//количество итераций
-     private int iteration;
+    private int iter;
+    private String iteration;
 
-    public TFract(int nn) {
-        this.iteration = nn;
+    public TFractal(int nn) {
+        this.iter = nn;
     }
-
+    public TFractal(String iteration) {
+        this.iteration= iteration;
+    }
+    public TFractal() {
+    }
 
     public static int drawTSQ(Graphics g, Point A, int size, int iter) {
         //параметры А - координата левого верхнего угла квадрата
@@ -60,8 +67,36 @@ public class TFract extends JPanel {
         int w = 1600;
 
         Point A = new Point(w / 2 - h / 4, h / 4);//координаты левого верхнего угла исходного квадрата
-        drawTSQ(g, A, h / 2 - h / 10, iteration);//вызываем отрисовку фрактала
+        drawTSQ(g, A, h / 2 - h / 10, iter);//вызываем отрисовку фрактала
         repaint();
 
+    }
+
+    @Override
+    public void drawFractal() throws IOException {
+        Image  img = new ImageIcon("src/main/resources/static/image/test.png").getImage();
+
+        BufferedImage bufferedImage = new BufferedImage(2000,1000,
+                BufferedImage.TYPE_INT_RGB);
+
+        Graphics g = bufferedImage.createGraphics();
+
+        TFractal sp=new TFractal(Integer.parseInt(iteration));
+        sp.paintComponent(g);
+        g.dispose();
+
+        try {
+            ImageIO.write(bufferedImage, "png", new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\tfract.bmp"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getIteration() {
+        return iteration;
+    }
+
+    public void setIteration(String iteration) {
+        this.iteration = iteration;
     }
 }

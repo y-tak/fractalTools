@@ -6,22 +6,17 @@
 </head>
 <body>
 
+<p><a href="/">На главную</a> </p>
+
 <form method="post" th:action="@{/mandelbrot}" th:object="${mandelbrot}">
-    <!--<label>Введите количество окружностей внутри круга: <input th:field="*{iteration}" type="text"></label>-->
-  <div>фрактал Мандельброт</div>
+   <div>Фрактал Мандельброт в диапозоне [-1.9,-1.2]--[ 0.5,1.2]) </div>
+    <label>Введите количество итераций меняет цветопередачу [100..1000]: <input th:field="*{iteration}" type="text"></label>
     <p><input type="submit" value="Нарисовать"></p>
-
     <img th:src="@{'/image/'+${imgname}}" alt="iii" width="1920" height="1080" border="2" />
-    <!--<img th:src="@{'/image/'+${imgname}}" alt="q" width="650" height="650" border="2" />-->
-    <!--<img src="D:\my\fractalTools\src\main\resources\image\speransky.png"  />-->
-
 </form>
 
 <p> Строим фрактал -  <span th:if="${addInfo}" th:text="${addInfo}" style="color:red"></span> !</p>
 
-
-
-<p><a href="/">На главную</a> </p>
 
 </body>
 </html>

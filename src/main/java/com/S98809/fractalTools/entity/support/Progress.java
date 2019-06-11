@@ -1,4 +1,7 @@
-package com.S98809.fractalTools.entity;
+package com.S98809.fractalTools.entity.support;
+
+import com.S98809.fractalTools.entity.support.FractalImage;
+import com.S98809.fractalTools.entity.support.Rgb888Image;
 
 public class Progress implements Rgb888Image {
     private long square;
