@@ -10,11 +10,12 @@
 <form method="post" th:action="@{/tfractal}" th:object="${tfractal}">
     <label>Введите количество итераций: <input th:field="*{iteration}" type="text"></label>
     <p><input type="submit" value="Нарисовать"></p>
-    <img th:src="@{'/image/'+${imgname}}" alt="iii" width="2000" height="1000" border="2" />
+
 
 
 </form>
 
+<img th:if="${imgname}" th:src="@{'/image/'+${imgname}}" alt="iii" width="2000" height="1000" border="2" />
 <p> Строим Т-фрактал на  <span th:if="${addInfo}" th:text="${addInfo}" style="color:red"></span> итераций !</p>
 
 

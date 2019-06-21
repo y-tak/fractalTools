@@ -58,7 +58,10 @@ public class Circus extends JPanel implements FractalClass {
         g.dispose();
 
         try {
+
             ImageIO.write(bufferedImage, "png", new File("D:\\my\\fractalTools\\target\\classes\\static\\image\\circus.png"));
+        //    ImageIO.write(bufferedImage, "png", new File("C:\\Users\\Public\\Pictures\\circus.png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

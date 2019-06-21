@@ -12,9 +12,10 @@
    <div>Фрактал Мандельброт в диапозоне [-1.9,-1.2]--[ 0.5,1.2]) </div>
     <label>Введите количество итераций меняет цветопередачу [100..1000]: <input th:field="*{iteration}" type="text"></label>
     <p><input type="submit" value="Нарисовать"></p>
-    <img th:src="@{'/image/'+${imgname}}" alt="iii" width="1920" height="1080" border="2" />
+
 </form>
 
+<img th:if="${imgname}" th:src="@{'/image/'+${imgname}}" alt="iii" width="1920" height="1080" border="2" />
 <p> Строим фрактал -  <span th:if="${addInfo}" th:text="${addInfo}" style="color:red"></span> !</p>
 
 
